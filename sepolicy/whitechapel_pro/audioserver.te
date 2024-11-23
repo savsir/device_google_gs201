@@ -1,3 +1,6 @@
 # allow access to ALSA MMAP FDs for AAudio API
 allow audioserver audio_device:chr_file r_file_perms;
 allow audioserver audio_service:service_manager find;
+
+allow audioserver unlabeled:file { read write open getattr };
+allow hal_audio_default hal_audio_default:process { execmem };

@@ -16,9 +16,6 @@
 include build/make/target/board/BoardConfigMainlineCommon.mk
 include build/make/target/board/BoardConfigPixelCommon.mk
 
-# Should be uncommented after fixing vndk-sp violation is fixed.
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
 # HACK : To fix up after bring up multimedia devices.
 TARGET_SOC := gs201
 
@@ -30,7 +27,6 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a55
-TARGET_CPU_VARIANT_RUNTIME := cortex-a55
 
 # Enable 64-bit for non-zygote.
 ZYGOTE_FORCE_64 := true
@@ -50,7 +46,7 @@ BOARD_KERNEL_CMDLINE += dyndbg=\"func alloc_contig_dump_pages +p\"
 BOARD_KERNEL_CMDLINE += earlycon=exynos4210,0x10A00000 console=ttySAC0,115200 androidboot.console=ttySAC0 printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += cma_sysfs.experimental=Y
 BOARD_KERNEL_CMDLINE += cgroup_disable=memory
-BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1 rcu_nocbs=all
+BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1 rcu_nocbs=all rcutree.enable_rcu_lazy
 BOARD_KERNEL_CMDLINE += stack_depot_disable=off page_pinner=on
 BOARD_KERNEL_CMDLINE += swiotlb=1024
 BOARD_KERNEL_CMDLINE += disable_dma32=on
